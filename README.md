@@ -1,27 +1,39 @@
-# ExportTempWorkspace
+Steps to Run the Workspace
+# Yoovo Export Workspace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+This workspace contains the `yoovo-export-library` as a Git submodule.  
+Follow the steps below to clone, install, and build it.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 1. Clone the workspace (with submodule)
 
-## Code scaffolding
+git clone --recurse-submodules <WORKSPACE_REPO_URL>
+cd <WORKSPACE_FOLDER>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+If you cloned without --recurse-submodules, run:
 
-## Build
+git submodule update --init --recursive
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Switch the library to the correct branch (develop)
 
-## Running unit tests
+The export library lives under projects/yoovo-export-library.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+cd projects/yoovo-export-library
+git checkout develop
+git pull
+cd ../..
 
-## Running end-to-end tests
+3. Install dependencies (workspace root)
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Build the library
+ng build yoovo-export-library
 
-## Further help
+Build output will be generated in:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+dist/yoovo-export-library/
+
+Done! 🎉
+
+The workspace is now fully set up and ready for development or integration.
