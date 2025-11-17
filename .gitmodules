@@ -1,0 +1,3 @@
+[submodule "projects/yoovo-export-library"]
+	path = projects/yoovo-export-library
+	url = git@github.com:David-yoovo/yoovo-export-library.git
