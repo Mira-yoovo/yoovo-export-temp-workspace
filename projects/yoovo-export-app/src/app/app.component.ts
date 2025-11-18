@@ -10,26 +10,18 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   YoovoExportLibraryComponent,
-  ExportChooseYourPiComponent,
   YoovoExportLibraryService,
-  Device,
 } from 'yoovo-export-library';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    YoovoExportLibraryComponent,
-    ExportChooseYourPiComponent,
-  ],
+  imports: [CommonModule, RouterOutlet, YoovoExportLibraryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'yoovo-export-app';
-  showExportPopup = false;
   private isBrowser: boolean;
 
   constructor(
@@ -48,24 +40,33 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Clean up connection when the app is destroyed
+    // Clean up connection and popup when the app is destroyed
+    this.exportService.closeExportPopup();
     this.exportService.stopConnection();
   }
 
-  openExportPopup() {
-    this.showExportPopup = true;
-  }
+  /**
+   * Open the export popup - the library handles everything
+   *
+   * You can choose where to display the popup:
+   * 1. Default: document.body
+   * 2. Specific container by ID
+   * 3. Specific container by element reference
+   */
+  onExport() {
+    console.log('📤 Export button clicked');
 
-  closeExportPopup() {
-    this.showExportPopup = false;
-  }
+    // Option 1: Open in document.body (default)
+    // this.exportService.openExportPopup();
 
-  onDeviceSelect(device: Device | null) {
-    console.log('Device selected:', device);
-    if (device) {
-      // Handle device selection
-      console.log('Selected device ID:', device.id);
-      console.log('Selected device name:', device.name);
-    }
+    // Option 2: Open in a specific container by ID
+    this.exportService.openExportPopup({ containerId: 'popup-container' });
+
+    // Option 3: Open in the navbar
+    // this.exportService.openExportPopup({ containerId: 'navbar' });
+
+    // Option 4: Open using element reference (if you have @ViewChild)
+    // const container = document.getElementById('popup-container');
+    // this.exportService.openExportPopup({ containerElement: container });
   }
 }
