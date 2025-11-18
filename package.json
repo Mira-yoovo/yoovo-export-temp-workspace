@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:ssr:yoovo-export-app": "node dist/yoovo-export-app/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -17,7 +18,9 @@
     "@angular/forms": "^17.3.0",
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@angular/ssr": "^18.2.20",
     "@iplab/ngx-color-picker": "^17.2.2",
     "@microsoft/signalr": "^9.0.6",
     "@ngrx/effects": "^17.2.0",
@@ -27,6 +30,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@wokwi/elements": "^1.9.0",
     "cssnano": "^7.0.7",
+    "express": "^4.18.2",
     "ngx-toastr": "^19.0.0",
     "postcss-preset-env": "^9.3.0",
     "rxjs": "~7.8.0",
@@ -40,7 +44,9 @@
     "@angular-devkit/build-angular": "^17.3.8",
     "@angular/cli": "^17.3.8",
     "@angular/compiler-cli": "^17.3.0",
+    "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
