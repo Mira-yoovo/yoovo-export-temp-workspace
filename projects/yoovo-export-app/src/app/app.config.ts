@@ -8,13 +8,12 @@ import {
   withFetch,
   withInterceptors,
 } from '@angular/common/http';
-import { authInterceptor } from 'yoovo-export-library';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
-
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { deviceReducer, DeviceEffects } from 'yoovo-export-library';
+import { authInterceptor } from 'projects/yoovo-export-library/src/public-api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
