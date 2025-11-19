@@ -11,18 +11,25 @@ import { CommonModule } from '@angular/common';
 import {
   YoovoExportLibraryComponent,
   YoovoExportLibraryService,
+  ExportLoginForTestingComponent,
 } from 'yoovo-export-library';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, YoovoExportLibraryComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    YoovoExportLibraryComponent,
+    ExportLoginForTestingComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'yoovo-export-app';
   private isBrowser: boolean;
+  showLogin = true; // Show login form for testing
 
   constructor(
     private exportService: YoovoExportLibraryService,
