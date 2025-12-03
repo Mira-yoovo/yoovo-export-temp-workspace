@@ -76,4 +76,9 @@ export class AppComponent implements OnInit, OnDestroy {
     // const container = document.getElementById('popup-container');
     // this.exportService.openExportPopup({ containerElement: container });
   }
+
+  toggleMyDevices() {
+    console.log('🖥️ My Devices button clicked');
+    this.exportService.openMyDevicesPopup({ containerId: 'popup-container' });
+  }
 }
