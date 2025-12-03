@@ -12,9 +12,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { deviceReducer, DeviceEffects } from 'yoovo-export-library';
+import { DeviceEffects, BindingEffects } from 'yoovo-export-library';
 import { authInterceptor } from 'projects/yoovo-export-library/src/public-api';
-import { BindingEffects } from 'projects/yoovo-export-library/src/lib/store/Binding/binding.effects';
+import { devicesReducer } from 'projects/yoovo-export-library/src/lib/store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,8 +28,8 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    provideStore({ devices: deviceReducer, binding: deviceReducer }),
-    provideEffects([DeviceEffects, BindingEffects]),
+    provideStore({ devices: devicesReducer }),
+    provideEffects([DeviceEffects , BindingEffects]),
     provideStoreDevtools({ maxAge: 25 }),
   ],
 };
