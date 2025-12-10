@@ -29,7 +29,7 @@ export const appConfig: ApplicationConfig = {
       preventDuplicates: true,
     }),
     provideStore({ devices: devicesReducer }),
-    provideEffects([DeviceEffects , BindingEffects]),
+    provideEffects([DeviceEffects, BindingEffects]),
     provideStoreDevtools({ maxAge: 25 }),
   ],
 };
